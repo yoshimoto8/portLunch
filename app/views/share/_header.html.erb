@@ -1,31 +1,16 @@
-<!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-<header class="mdl-layout__header">
-<div class="mdl-layout__header-row">
-  <!-- Title -->
-  <span class="mdl-layout-title">Title</span>
-  <!-- Add spacer, to align navigation to the right -->
-  <div class="mdl-layout-spacer"></div>
-  <!-- Navigation. We hide it in small screens. -->
-  <nav class="mdl-navigation mdl-layout--large-screen-only">
-
-    <a class="mdl-navigation__link" href="">Link</a>
-    <a class="mdl-navigation__link" href="">Link</a>
-    <a class="mdl-navigation__link" href="">Link</a>
-    <a class="mdl-navigation__link" href=""><%= link_to "ログイン", "/workers/sign_in" %></a>
-  </nav>
-</div>
-</header>
-<div class="mdl-layout__drawer">
-<span class="mdl-layout-title">Title</span>
-<nav class="mdl-navigation">
-  <a class="mdl-navigation__link" href="">Link</a>
-  <a class="mdl-navigation__link" href="">Link</a>
-  <a class="mdl-navigation__link" href="">Link</a>
-  <a class="mdl-navigation__link" href="">Link</a>
-</nav>
-</div>
-<main class="mdl-layout__content">
-<div class="page-content"><!-- Your content goes here --></div>
-</main>
+<div class="header">
+  <div class="header-content">
+    <div class="header-content__right">
+      <div class="header-content__right__logo">
+        ロゴ
+      </div>
+      <div class="header-content__right__lunch">
+        ランチ募集をみる
+      </div>
+    </div>
+    <ul class="header-content__left">
+      <li class="header-content__left__signin"><%= link_to "新規登録", "/workers/sign_up" %></li>
+      <li class="header-content__left__login"><%= link_to "ログイン", "/workers/sign_in" %></li>
+    </ul>
+  </div>
 </div>
