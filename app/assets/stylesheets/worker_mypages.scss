@@ -1,3 +1,35 @@
 // Place all the styles related to the worker_mypages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.worker-introduction {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    width: 980px;
+    height: 100%;
+  }
+}
+
+//自己紹介コンポーネント
+.introduction-upper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.introduction-content__btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  &__cancel {
+    margin: 0 10px;
+  }
+  &__update {
+    margin: 0 10px;
+  }
+}
