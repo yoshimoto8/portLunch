@@ -13,6 +13,13 @@
     a
   </div>
 
+  <form class="introduction-content edit" >
+    <div>
+      <textarea name="comment" rows="3" cols="30" placeholder="コメント"></textarea>
+    </div>
+    <p><span id="count"></span>/200</p>
+  </form>
+
   <div class="introduction-content edit">
     <div class="introduction-content__text">
       私は貝になりたい
@@ -30,5 +37,16 @@
 </div>
 
 <script>
+  // フォームを表示非表示
 
+  // 文字数を表示させる
+  $("textarea").on('keydown keyup change', function() {
+    var count = $(this).val().length;
+    $("#count").text(count);
+    if(count > 200) {
+      $("#count").css({color: 'red', fontWeight: 'bold'});
+    }else{
+      $("#count").css({color: '#333', fontWeight: 'normal'});
+    }
+  });
 </script>
