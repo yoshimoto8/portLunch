@@ -3,50 +3,50 @@
     <div class="introduction-upper__title">
       <h3>自己紹介文</h3>
     </div>
-    <button class="introduction-upper__edit">
+    <button id="edit-botton" class="introduction-upper__edit ui button" onclick="editIntroduction()">
       編集する
     </button>
   </div>
 
-  <div class="introduction-content no-edit">
+  <div id="introduction-content" class="introduction-content">
     私は貝になりたい
-    a
   </div>
 
-  <form class="introduction-content edit" >
-    <div>
-      <textarea name="comment" rows="3" cols="30" placeholder="コメント"></textarea>
-    </div>
-    <p><span id="count"></span>/200</p>
-  </form>
-
-  <div class="introduction-content edit">
-    <div class="introduction-content__text">
-      私は貝になりたい
+  <div id="introduction-form" class="introduction-content ui form">
+    <div class="field">
+      <textarea placeholder="自己紹介文を入力してください"></textarea>
     </div>
     <div class="introduction-content__btn">
-      <button class="introduction-content__btn__cancel">
+      <button class="introduction-content__btn__cancel ui button" onclick="cancelEdit()">
         キャンセル
       </button>
-      <button class="introduction-content__btn__update">
+      <button class="introduction-content__btn__update ui secondary button">
         更新
       </button>
     </div>
   </div>
-
 </div>
 
 <script>
   // フォームを表示非表示
+  document.getElementById("introduction-form").style.visibility ="hidden";
+  function editIntroduction() {
+    const introductionForm = document.getElementById("introduction-form");
+    const introductionContent = document.getElementById("introduction-content");
+    const editBotton = document.getElementById("edit-botton");
 
-  // 文字数を表示させる
-  $("textarea").on('keydown keyup change', function() {
-    var count = $(this).val().length;
-    $("#count").text(count);
-    if(count > 200) {
-      $("#count").css({color: 'red', fontWeight: 'bold'});
-    }else{
-      $("#count").css({color: '#333', fontWeight: 'normal'});
+    if (introductionForm.style.visibility === "visible") {
+      introductionForm.style.visibility = "hidden";
+    } else {
+      introductionContent.style.visibility = "hidden"
+      editBotton.style.visibility = "hidden"
+      introductionForm.style.visibility = "visible";
     }
-  });
+  }
+  //キャンセルボタンを押したときの表示非表示
+  function cancelEdit() {
+    document.getElementById("introduction-content").style.visibility = "visible"
+    document.getElementById("edit-botton").style.visibility = "visible"
+    document.getElementById("introduction-form").style.visibility = "hidden";
+  }
 </script>
