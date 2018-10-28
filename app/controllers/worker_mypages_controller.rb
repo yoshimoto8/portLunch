@@ -6,6 +6,7 @@ class WorkerMypagesController < ApplicationController
   # end
   # def show
   # end
-  # def update
-  # end
+  def update
+    @worker = Worker.find(current_worker.id).update(self_introduction: params[:self_introduction])
+  end
 end

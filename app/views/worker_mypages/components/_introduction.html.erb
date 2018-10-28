@@ -1,0 +1,72 @@
+<div class="introduction">
+  <div class="introduction-upper">
+    <div class="introduction-upper__title">
+      <h3>自己紹介文</h3>
+    </div>
+    <button id="edit-botton" class="introduction-upper__edit ui button" onclick="editIntroduction()">
+      編集する
+    </button>
+  </div>
+
+  <div id="introduction-content" class="introduction-content">
+    <p>
+      <%= @worker.self_introduction %>
+    </p>
+  </div>
+
+  <div id="introduction-form" class="introduction-content ui form">
+    <div class="field">
+      <textarea id="introduction-textarea" placeholder="自己紹介文を入力してください">
+        <%= @worker.self_introduction %>
+      </textarea>
+    </div>
+    <div class="introduction-content__btn">
+      <button class="introduction-content__btn__cancel ui button" onclick="cancelEdit()">
+        キャンセル
+      </button>
+      <button class="introduction-content__btn__update ui secondary button" onclick="pushEditedContent()">
+        更新
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // フォームを表示非表示
+  document.getElementById("introduction-form").style.visibility ="hidden";
+  function editIntroduction() {
+    const introductionForm = document.getElementById("introduction-form");
+    const introductionContent = document.getElementById("introduction-content");
+    const editBotton = document.getElementById("edit-botton");
+
+    if (introductionForm.style.visibility === "visible") {
+      introductionForm.style.visibility = "hidden";
+    } else {
+      introductionContent.style.visibility = "hidden"
+      editBotton.style.visibility = "hidden"
+      introductionForm.style.visibility = "visible";
+    }
+  }
+  //キャンセルボタンを押したときの表示非表示
+  function cancelEdit() {
+    document.getElementById("introduction-content").style.visibility = "visible"
+    document.getElementById("edit-botton").style.visibility = "visible"
+    document.getElementById("introduction-form").style.visibility = "hidden";
+  }
+  //更新ボタンを押した時
+  function pushEditedContent() {
+    const introductionTextarea = document.getElementById("introduction-textarea").value;
+    $.ajax({
+      url: "/worker_mypages/1",
+      type: "PUT",
+      data: {self_introduction: introductionTextarea},
+      dataType: "json",
+      success: function(data) {
+          cancelEdit()
+      },
+      error: function(data) {
+          alert("errror");
+      }
+  });
+  }
+</script>
