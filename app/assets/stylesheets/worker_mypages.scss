@@ -20,6 +20,12 @@ body {
   &__container {
     width: 980px;
     height: 100%;
+    background-color: #ffffff;
+    border-radius: 5px 5px;
+    border-color: #ECEEF1;
+  }
+  &__contents {
+    padding: 20px;
   }
 }
 
@@ -32,6 +38,27 @@ body {
 }
 
 .introduction-content__btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  &__cancel {
+    margin: 0 10px;
+  }
+  &__update {
+    margin: 0 10px;
+  }
+}
+
+//やりたいことコンポーネント
+.wanttodo-upper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wanttodo-content__btn {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

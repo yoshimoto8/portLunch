@@ -57,7 +57,7 @@
   function pushEditedContent() {
     const introductionTextarea = document.getElementById("introduction-textarea").value;
     $.ajax({
-      url: "/worker_mypages/1",
+      url: '/worker_mypages/<%= @worker.id %>',
       type: "PUT",
       data: {self_introduction: introductionTextarea},
       dataType: "json",
