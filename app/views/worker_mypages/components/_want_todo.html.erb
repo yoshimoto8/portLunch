@@ -1,8 +1,72 @@
-<div class="introduction">
-  <div class="introduction__title">
-    <h3>これからやってみたいこと</h3>
+<div class="wanttodo">
+  <div class="wanttodo-upper">
+    <div class="wanttodo-upper__title">
+      <h3>これからやりたいこと</h3>
+    </div>
+    <button id="wanttodo-edit-botton" class="wanttodo-upper__edit ui button" onclick="editWantTodo()">
+      編集する
+    </button>
   </div>
-  <div class="introduction__content">
-    海賊王に俺はなる
+
+  <div id="wanttodo-content" class="wanttodo-content">
+    <p>
+      <%= @worker.want_to_do_thing %>
+    </p>
+  </div>
+
+  <div id="wanttodo-form" class="wanttodo-content ui form">
+    <div class="field">
+      <textarea id="wanttodo-textarea" placeholder="自己紹介文を入力してください">
+        <%= @worker.want_to_do_thing %>
+      </textarea>
+    </div>
+    <div class="wanttodo-content__btn">
+      <button class="wanttodo-content__btn__cancel ui button" onclick="cancelEditWantTodo()">
+        キャンセル
+      </button>
+      <button class="wanttodo-content__btn__update ui secondary button" onclick="pushEditedWantTodoContent()">
+        更新
+      </button>
+    </div>
   </div>
 </div>
+
+<script>
+  // フォームを表示非表示
+  document.getElementById("wanttodo-form").style.visibility ="hidden";
+  function editWantTodo() {
+    const wantTodoForm = document.getElementById("wanttodo-form");
+    const wantTodoContent = document.getElementById("wanttodo-content");
+    const wantTodoEditBotton = document.getElementById("wanttodo-edit-botton");
+
+    if (wantTodoForm.style.visibility === "visible") {
+      wantTodoForm.style.visibility = "hidden";
+    } else {
+      wantTodoContent.style.visibility = "hidden"
+      wantTodoEditBotton.style.visibility = "hidden"
+      wantTodoForm.style.visibility = "visible";
+    }
+  }
+  //キャンセルボタンを押したときの表示非表示
+  function cancelEditWantTodo() {
+    document.getElementById("wanttodo-content").style.visibility = "visible"
+    document.getElementById("wanttodo-edit-botton").style.visibility = "visible"
+    document.getElementById("wanttodo-form").style.visibility = "hidden";
+  }
+  //更新ボタンを押した時
+  function pushEditedWantTodoContent() {
+    const wantTodoTextarea = document.getElementById("wanttodo-textarea").value;
+    $.ajax({
+      url: '/worker_mypages/<%= @worker.id %>',
+      type: "PUT",
+      data: {want_to_do_thing: wantTodoTextarea},
+      dataType: "json",
+      success: function(data) {
+          cancelEditWantTodo()
+      },
+      error: function(data) {
+          alert("errror");
+      }
+  });
+  }
+</script>
