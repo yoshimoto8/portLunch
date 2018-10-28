@@ -9,18 +9,22 @@
   </div>
 
   <div id="introduction-content" class="introduction-content">
-    私は貝になりたい
+    <p>
+      <%= @worker.self_introduction %>
+    </p>
   </div>
 
   <div id="introduction-form" class="introduction-content ui form">
     <div class="field">
-      <textarea placeholder="自己紹介文を入力してください"></textarea>
+      <textarea id="introduction-textarea" placeholder="自己紹介文を入力してください">
+        <%= @worker.self_introduction %>
+      </textarea>
     </div>
     <div class="introduction-content__btn">
       <button class="introduction-content__btn__cancel ui button" onclick="cancelEdit()">
         キャンセル
       </button>
-      <button class="introduction-content__btn__update ui secondary button">
+      <button class="introduction-content__btn__update ui secondary button" onclick="pushEditedContent()">
         更新
       </button>
     </div>
@@ -48,5 +52,21 @@
     document.getElementById("introduction-content").style.visibility = "visible"
     document.getElementById("edit-botton").style.visibility = "visible"
     document.getElementById("introduction-form").style.visibility = "hidden";
+  }
+  //更新ボタンを押した時
+  function pushEditedContent() {
+    const introductionTextarea = document.getElementById("introduction-textarea").value;
+    $.ajax({
+      url: "/worker_mypages/1",
+      type: "PUT",
+      data: {self_introduction: introductionTextarea},
+      dataType: "json",
+      success: function(data) {
+          cancelEdit()
+      },
+      error: function(data) {
+          alert("errror");
+      }
+  });
   }
 </script>
