@@ -9,8 +9,25 @@
       </div>
     </div>
     <ul class="header-content__left">
-      <li class="header-content__left__signin"><%= link_to "新規登録", "/workers/sign_up" %></li>
-      <li class="header-content__left__login"><%= link_to "ログイン", "/workers/sign_in" %></li>
+      <% if worker_signed_in? %>
+      <div class="header-content__left__contents">
+        <div class="header-content__left__contents__notification">
+          <i class="large comment alternate outline icon"></i>
+        </div>
+        <div class="ui horizontal list">
+          <div class="item">
+            <img class="ui mini circular image" src="/images/avatar2/small/molly.png">
+            <div class="content">
+              <div class="ui sub header">Molly</div>
+              Coordinator
+            </div>
+          </div>
+        </div>
+      </div>
+      <% else %>
+        <li class="header-content__left__signin"><%= link_to "新規登録", "/workers/sign_up" %></li>
+        <li class="header-content__left__login"><%= link_to "ログイン", "/workers/sign_in" %></li>
+      <% end %>
     </ul>
   </div>
 </div>

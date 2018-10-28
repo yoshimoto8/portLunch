@@ -20,6 +20,14 @@
   &__left {
     display: flex;
     list-style: none;
+    &__contents {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__notification {
+        margin-right: 30px;
+      }
+    }
     &__signin{
       padding: 0 10px;
       //取りあいず＿を消すようにしている
