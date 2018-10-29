@@ -1,19 +1,16 @@
 class WorkerMypagesController < ApplicationController
   def index
-    @worker = Worker.find(current_worker.id)
-    p @worker
+    @worker = current_worker
   end
-  # def create
-  # end
-  # def show
-  # end
+
   def update
-    @worker = Worker.find(current_worker.id).update(filter_params())
+    current_worker.update(filter_params)
+    @worker = current_worker
   end
 
   private
 
   def filter_params
-    params.permit(:want_to_do_thing, :self_introduction)
+    params.require(:worker).permit(:want_to_do_thing, :self_introduction)
   end
 end

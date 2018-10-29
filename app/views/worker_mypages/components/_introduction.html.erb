@@ -9,31 +9,20 @@
   </div>
 
   <div id="introduction-content" class="introduction-content">
-    <p>
-      <%= @worker.self_introduction %>
-    </p>
+    <%= simple_format(worker.self_introduction) %>
   </div>
-  <%= form_with(model: @worker, url: worker_mypage_path(id: @worker.id)) do |f| %>
-    <%= f.text_field :self_introduction %>
-  <% end %>
- <div id="introduction-form" class="introduction-content ui form">
-    <div class="field">
-      <textarea id="introduction-textarea" placeholder="自己紹介文を入力してください">
-        <%= @worker.self_introduction %>
-      </textarea>
-    </div>
-    <div class="introduction-content__btn">
-      <button class="introduction-content__btn__cancel ui button" onclick="cancelEdit()">
-        キャンセル
-      </button>
-      <button class="introduction-content__btn__update ui secondary button" onclick="pushEditedContent()">
-        更新
-      </button>
-    </div>
+
+  <div id="introduction-form" class="introduction-content ui form">
+    <%= form_with(model: worker, url: worker_mypage_path(id: worker.id), id: "edit-introduction") do |f| %>
+      <div class="field">
+        <%= f.text_area :self_introduction%>
+      </div>
+      <div class="introduction-content__btn">
+        <button class="introduction-content__btn__cancel ui button" onclick="cancelEdit()">
+          キャンセル
+        </button>
+        <%= f.submit "更新", class: "introduction-content__btn__update ui secondary button"%>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<script>
-  //これが表示される前に関数を呼びたいがわからないため直接書いている
-  introduction_mount()
-</script>
