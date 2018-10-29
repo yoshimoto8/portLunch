@@ -8,6 +8,8 @@
 
 
 ## ユーザー情報(worker)
+worker = Worker.new(email: 'example@example.com', password: 'example')
+worker.save!
 # Worker.create(
 #   email: "yamada@example.com",
 #   encrypted_password: "aaaaaaaaa",
