@@ -22,10 +22,3 @@ function cancelEdit() {
   document.getElementById("edit-botton").style.visibility = "visible"
   document.getElementById("introduction-form").style.visibility = "hidden";
 }
-
-$(document).on("ajax:success", "#edit-introduction", function(e) {
-  cancelEdit()
-  });
-$(document).on("ajax:error", "#edit-introduction", function(e) {
-  // 失敗した時の処理
-});
