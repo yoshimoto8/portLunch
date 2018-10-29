@@ -1,0 +1,29 @@
+<div class="edit-image-word">
+  <h2 class="ui header">
+    <%= @worker.worker_images.url %>
+    <div class="content">
+      <%= @worker.worker_name %>
+      <div class="sub header"><%= @worker.one_word %></div>
+    </div>
+  </h2>
+  <div>
+    <button id="edit-image-word" class="ui button">
+      編集する
+    </button>
+  </div>
+
+  <%= form_with url: worker_mypage_url do |f| %>
+    <div class="field">
+      <%= f.label :worker_images %><br>
+      <%= f.text_field :worker_images %>
+      <%= f.file_field :worker_images %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+
+</script>

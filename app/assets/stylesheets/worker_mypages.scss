@@ -11,8 +11,15 @@ body {
   background-color: #ffffff;
 }
 
+// woker画像とword
+.edit-image-word {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+//自己紹介コンポーネント
 .worker-introduction {
-  padding-top: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -29,7 +36,6 @@ body {
   }
 }
 
-//自己紹介コンポーネント
 .introduction-upper {
   display: flex;
   flex-direction: row;

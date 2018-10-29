@@ -1,6 +1,7 @@
 class WorkerMypagesController < ApplicationController
   def index
     @worker = Worker.find(current_worker.id)
+    p @worker
   end
   # def create
   # end
