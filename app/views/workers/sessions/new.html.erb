@@ -1,0 +1,30 @@
+<div class="worker-login-form">
+  <div class="worker-login-form_container">
+    <div class="worker-login__contents">
+      <h4 class="worker-login__contents__title">メールアドレスでログイン</h4>
+      <%= form_for(resource, html: { class: "worker-login__contents__form ui form" }, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, placeholder: "パスワード", autocomplete: "current-password" %>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+
+        <div class="worker-login__contents__form__btn actions">
+          <%= f.submit "ログインする", class: "ui orange button" %>
+        </div>
+      <% end %>
+      <div class="worker-login__contents__guide">
+        <%= render "workers/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
