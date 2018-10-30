@@ -7,7 +7,6 @@
       <div class="header-content__right__lunch">
         ランチ募集をみる
       </div>
-      <%= link_to "ログアウト", destroy_worker_session_path, method: "delete" %>
     </div>
     <ul class="header-content__left">
       <% if worker_signed_in? %>
@@ -15,13 +14,15 @@
         <div class="header-content__left__contents__notification">
           <i class="large comment alternate outline icon"></i>
         </div>
-        <div class="ui horizontal list">
-          <div class="item">
-            <img class="ui mini circular image" src="/images/avatar2/small/molly.png">
-            <div class="content">
-              <div class="ui sub header">Molly</div>
-              Coordinator
-            </div>
+        <div class="ui icon top left pointing dropdown button">
+          <i class="wrench icon"></i>
+          <div class="menu">
+            <div class="header">Display Density</div>
+            <div class="item"><%= link_to "マイページ", worker_mypages_path %></div>
+            <div class="item">Cozy</div>
+            <div class="item">Compact</div>
+            <div class="ui divider"></div>
+            <div class="item"><%= link_to "ログアウト", destroy_worker_session_path, method: "delete" %></div>
           </div>
         </div>
       </div>
@@ -32,3 +33,8 @@
     </ul>
   </div>
 </div>
+
+<script>
+    $('.ui.dropdown')
+            .dropdown();
+</script>
